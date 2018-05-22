@@ -1,0 +1,34 @@
+import * as React from 'react'
+import * as RN from 'react-navigation'
+import { Animated } from 'react-native'
+
+declare module 'react-navigation' {
+  export function createMaterialTopTabNavigator(
+    routeConfig: NavigationRouteConfigMap,
+    tabConfig: TabNavigatorConfig
+  ): NavigationContainer
+
+  export interface IInjectedCustomTabBarProps {
+    position: Animated.Value
+    offsetX: Animated.Value
+    panX: Animated.Value
+    layout: {
+      height: number
+      width: number
+      measured: boolean
+    }
+    navigation: NavigationScreenProp<NavigationState>
+    navigationState: NavigationState
+    renderIcon: (
+      props: {
+        route: any
+        focused: boolean
+        tintColor: string
+      }
+    ) => React.ReactNode
+    getLabelText: (props: { route: any }) => any
+    useNativeDriver?: boolean
+    jumpTo: (key: string) => any
+    jumpToIndex: (index: number) => void
+  }
+}
